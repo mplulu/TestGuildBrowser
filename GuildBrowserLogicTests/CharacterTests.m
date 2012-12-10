@@ -14,6 +14,8 @@
 {
     // 1
     NSDictionary *_characterDetailJson;
+    // --ADDED _testGuy
+    Character *_testGuy;
 }
 
 // 2
@@ -55,9 +57,22 @@
     STAssertNotNil(testGuy2, @"Could not create character from nil data");
 }
 
+-(void)testCreateCharacterFromDetailJsonValidateItems
+{
+    
+    // --ADDED _testGuy
+    _testGuy = [[Character alloc] initWithCharacterDetailData:_characterDetailJson];
+    STAssertNotNil(_testGuy, @"Could not create character from detail json");
+}
 // 1
+    
 -(void)testCreateCharacterFromDetailJsonProps
 {
+    
+    // 2
+    // --ADDED _testGuy
+    _testGuy = [[Character alloc] initWithCharacterDetailData:_characterDetailJson];
+    STAssertNotNil(_testGuy, @"Could not create character from detail json");
     STAssertEqualObjects(_testGuy.thumbnail, @"borean-tundra/171/40508075-avatar.jpg", @"thumbnail url is wrong");
     STAssertEqualObjects(_testGuy.name, @"Hagrel", @"name is wrong");
     STAssertEqualObjects(_testGuy.battleGroup, @"Emberstorm", @"battlegroup is wrong");
